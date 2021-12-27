@@ -13,6 +13,7 @@ workspace_layout tabbed
 
 bindsym $mod+Shift+q    exec i3lock -c 000000
 
+
 # Launch Shortcuts 
 # ------------------------------------------------------------------------------
 bindsym $mod+Return exec urxvt 
@@ -20,6 +21,8 @@ bindsym $mod+q kill
 bindsym $mod+d exec rofi -fuzzy -opacity "85" -bg "#262626" -fg "#8e8c91" -width 12 -show run 
 bindsym $mod+c exec firefox
 bindsym $mod+Shift+r reload
+bindsym $mod+b exec polybar-msg cmd toggle
+
 
 # Colors 
 # ------------------------------------------------------------------------------
@@ -66,23 +69,12 @@ mode "resize" {
         bindsym Escape mode "default"
 }
 
-# Status Bar
-# ------------------------------------------------------------------------------
-bar {
-    font pango:bitstream vera 10 
-    status_command i3blocks -c ~/.config/i3/i3blocks.conf
-    position bottom
-
-    colors {
-        background $bg-color
-    }
-}
-
 # Startups
 # ------------------------------------------------------------------------------
 exec --no-startup-id nm-applet
 exec --no-startup-id synclient NaturalScrolling=1 VertScrollDelta=-113
-exec feh --bg-scale ~/Documents/backgrounds/mist.jpg 
+exec feh --bg-scale ~/Documents/mist.png 
+exec_always --no-startup-id $HOME/.config/polybar/launch.sh
 
 # i3 gaps stuff
 # ------------------------------------------------------------------------------
@@ -90,7 +82,9 @@ new_window pixel 1
 gaps inner 10
 gaps outer 0 
 smart_gaps on
+
 smart_borders on
+smart_borders no_gaps 
 
 set $mode_gaps Gaps: (o) outer, (i) inner
 set $mode_gaps_outer Outer Gaps: +|-|0 (local), Shift + +|-|0 (global)
@@ -193,3 +187,4 @@ bindsym --release $mod+h exec --no-startup-id "i3-vim-nav h"
 bindsym --release $mod+j exec --no-startup-id "i3-vim-nav j"
 bindsym --release $mod+k exec --no-startup-id "i3-vim-nav k"
 bindsym --release $mod+l exec --no-startup-id "i3-vim-nav l"
+
