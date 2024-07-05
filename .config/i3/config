@@ -1,9 +1,11 @@
 # Init Settings 
 # ------------------------------------------------------------------------------
-set $mod Mod4
+
+set $mod Mod3
 set $mod_alt Mod4
-font pango:bitstream vera 8 
-set $bg-color          #232629 
+font xft:inconsolata bold 12
+title_align center
+set $bg-color          #11111b
 floating_modifier $mod
 focus_follows_mouse no
 
@@ -13,12 +15,11 @@ workspace_layout tabbed
 
 bindsym $mod+Shift+q    exec i3lock -c 000000
 
-
 # Launch Shortcuts 
-# ------------------------------------------------------------------------------
+# ------.------------------------------------------------------------------------
 bindsym $mod+Return exec urxvt 
 bindsym $mod+q kill
-bindsym $mod+d exec rofi -fuzzy -opacity "85" -bg "#262626" -fg "#8e8c91" -width 12 -show run 
+bindsym $mod+d exec rofi -fuzzy -opacity "85" -bg "#11111b" -fg "#cdd6f4" -width 12 -show run 
 bindsym $mod+c exec firefox
 bindsym $mod+Shift+r reload
 bindsym $mod+b exec polybar-msg cmd toggle
@@ -27,8 +28,14 @@ bindsym $mod+b exec polybar-msg cmd toggle
 # Colors 
 # ------------------------------------------------------------------------------
 # class                 border  backgr. text    indicator child_border
-client.focused          #sc7a7a #sc7a7a #bdf9f9 #55bbbb   #SC7a7a
-client.unfocused        #273333 #273333 #8db9b9 #55bbbb   #273333
+client.focused          #292e42 #292e42 #cdd6f4 #55bbbb   #292e42 
+client.focused_inactive #11111b #11111b #FFFFFF #454948
+client.unfocused        #11111b #11111b #FFFFFF #454948
+client.urgent           #CB4B16 #FDF6E3 #1ABC9C #268BD2
+client.placeholder      #000000 #0c0c0c #ffffff #000000 
+
+client.background       #11111b
+
 
 # Window Bindings 
 # ------------------------------------------------------------------------------
@@ -37,10 +44,10 @@ bindsym $mod+j focus down
 bindsym $mod+k focus up
 bindsym $mod+l focus right
 
-bindsym $mod+Shift+h move left
-bindsym $mod+Shift+j move down
-bindsym $mod+Shift+k move up
-bindsym $mod+Shift+l move right
+bindsym $mod_alt+h move left
+bindsym $mod_alt+j move down
+bindsym $mod_alt+k move up
+bindsym $mod_alt+l move right
 
 bindsym $mod+Shift+v split h
 bindsym $mod+v split v
@@ -72,56 +79,56 @@ mode "resize" {
 # Startups
 # ------------------------------------------------------------------------------
 exec --no-startup-id nm-applet
-exec --no-startup-id synclient NaturalScrolling=1 VertScrollDelta=-113
+#exec --no-startup-id synclient NaturalScrolling=1 VertScrollDelta=-113
 exec feh --bg-scale ~/Documents/mist.png 
 exec_always --no-startup-id $HOME/.config/polybar/launch.sh
 
 # i3 gaps stuff
 # ------------------------------------------------------------------------------
-new_window pixel 1
-gaps inner 10
-gaps outer 0 
-smart_gaps on
-
-smart_borders on
-smart_borders no_gaps 
-
-set $mode_gaps Gaps: (o) outer, (i) inner
-set $mode_gaps_outer Outer Gaps: +|-|0 (local), Shift + +|-|0 (global)
-set $mode_gaps_inner Inner Gaps: +|-|0 (local), Shift + +|-|0 (global)
-bindsym $mod+Shift+g mode "$mode_gaps"
-
-mode "$mode_gaps" {
-        bindsym o      mode "$mode_gaps_outer"
-        bindsym i      mode "$mode_gaps_inner"
-        bindsym Return mode "default"
-        bindsym Escape mode "default"
-}
-
-mode "$mode_gaps_inner" {
-        bindsym plus  gaps inner current plus 5
-        bindsym minus gaps inner current minus 5
-        bindsym 0     gaps inner current set 0
-
-        bindsym Shift+plus  gaps inner all plus 5
-        bindsym Shift+minus gaps inner all minus 5
-        bindsym Shift+0     gaps inner all set 0
-
-        bindsym Return mode "default"
-        bindsym Escape mode "default"
-}
-mode "$mode_gaps_outer" {
-        bindsym plus  gaps outer current plus 5
-        bindsym minus gaps outer current minus 5
-        bindsym 0     gaps outer current set 0
-
-        bindsym Shift+plus  gaps outer all plus 5
-        bindsym Shift+minus gaps outer all minus 5
-        bindsym Shift+0     gaps outer all set 0
-
-        bindsym Return mode "default"
-        bindsym Escape mode "default"
-}
+#new_window pixel 1
+#gaps inner 10
+#gaps outer 0 
+#smart_gaps on
+#
+#smart_borders on
+#smart_borders no_gaps 
+#
+#set $mode_gaps Gaps: (o) outer, (i) inner
+#set $mode_gaps_outer Outer Gaps: +|-|0 (local), Shift + +|-|0 (global)
+#set $mode_gaps_inner Inner Gaps: +|-|0 (local), Shift + +|-|0 (global)
+#bindsym $mod+Shift+g mode "$mode_gaps"
+#
+#mode "$mode_gaps" {
+#        bindsym o      mode "$mode_gaps_outer"
+#        bindsym i      mode "$mode_gaps_inner"
+#        bindsym Return mode "default"
+#        bindsym Escape mode "default"
+#}
+#
+#mode "$mode_gaps_inner" {
+#        bindsym plus  gaps inner current plus 5
+#        bindsym minus gaps inner current minus 5
+#        bindsym 0     gaps inner current set 0
+#
+#        bindsym Shift+plus  gaps inner all plus 5
+#        bindsym Shift+minus gaps inner all minus 5
+#        bindsym Shift+0     gaps inner all set 0
+#
+#        bindsym Return mode "default"
+#        bindsym Escape mode "default"
+#}
+#mode "$mode_gaps_outer" {
+#        bindsym plus  gaps outer current plus 5
+#        bindsym minus gaps outer current minus 5
+#        bindsym 0     gaps outer current set 0
+#
+#        bindsym Shift+plus  gaps outer all plus 5
+#        bindsym Shift+minus gaps outer all minus 5
+#        bindsym Shift+0     gaps outer all set 0
+#
+#        bindsym Return mode "default"
+#        bindsym Escape mode "default"
+#}
 
 # Utilities
 # ------------------------------------------------------------------------------
